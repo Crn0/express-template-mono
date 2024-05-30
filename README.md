@@ -1,1 +1,1 @@
-# express-template-mono
+# express-template
