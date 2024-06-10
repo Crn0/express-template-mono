@@ -1,5 +1,8 @@
 import 'dotenv/config';
 import express from "express";
+import mongoose from "mongoose";
+import passport from "passport";
+import __dirname from "../dirname.mjs";
 import createError from "http-errors";
 import { join } from "path";
 import cookieParser from "cookie-parser";
@@ -13,14 +16,14 @@ const { dirname } = import.meta;
 const app = express();
 
 // view engine setup
-app.set("views", join(dirname, "views"));
+app.set("views", join(__dirname, "src/views"));
 app.set("view engine", "pug");
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(join(dirname, "public")));
+app.use(express.static(join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
